@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Abi, TransactionExecutionError } from 'viem';
-import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
+import { useSimulateContract, useWaitForTransactionReceipt, useWriteContract, usePrepareTransactionRequest } from 'wagmi';
 import { UseContractReturn } from '@/hooks/contracts';
 import { useLoggedInUserCanAfford } from '@/hooks/useUserCanAfford';
+import { useLoggedInUserPolicyResultsContract } from '@/hooks/useGetPolicyResults';
 
 export enum TransactionStates {
   START,
@@ -41,6 +42,15 @@ export default function useSmartContractForms({
     },
     value: gasFee,
   });
+  
+  const policyResult = useLoggedInUserPolicyResultsContract({
+    contract: contract,
+    to: contract.status === 'ready' ? contract.address : undefined,
+    functionName: functionName,
+    args: args,
+    value: gasFee,
+  });
+  
 
   const {
     writeContract,
@@ -56,10 +66,10 @@ export default function useSmartContractForms({
     },
   });
 
-  const disabled = contract.status !== 'ready' || writeContractStatus === 'pending' || !canAfford;
+  const disabled = contract.status !== 'ready' || writeContractStatus === 'pending' || !canAfford || !policyResult || policyResult.decision !== 'Allow';
 
   const onSubmitTransaction = useCallback(
-    (event: { preventDefault: () => void }) => {
+    async (event: { preventDefault: () => void }) => {
       event.preventDefault();
 
       const request = contractRequest?.request;

@@ -1,7 +1,7 @@
 {
-  "name": "@coinbase/build-onchain-apps",
+  "name": "@0xshield3/build-onchain-apps",
   "version": "0.31.0",
-  "repository": "https://github.com/coinbase/build-onchain-apps.git",
+  "repository": "https://github.com/0xshield3/build-onchain-apps.git",
   "license": "Apache-2.0",
   "dependencies": {
     "@clack/prompts": "^0.7.0",

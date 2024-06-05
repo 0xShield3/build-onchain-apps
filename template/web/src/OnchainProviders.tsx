@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { baseSepolia } from 'viem/chains';
 import { WagmiProvider } from 'wagmi';
 import { createWagmiConfig } from '@/store/createWagmiConfig';
+import { Shield3Provider } from '@shield3/react-sdk';
 
 type Props = { children: ReactNode };
 
@@ -17,11 +18,13 @@ const wagmiConfig = createWagmiConfig(rpcUrl);
 
 function OnchainProviders({ children }: Props) {
   return (
-    <WagmiProvider config={wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
-        <OnchainKitProvider chain={baseSepolia}>{children}</OnchainKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <Shield3Provider apiKey={process.env.NEXT_PUBLIC_SHIELD3_API_KEY || ''}>
+      <WagmiProvider config={wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+          <OnchainKitProvider chain={baseSepolia}>{children}</OnchainKitProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </Shield3Provider>
   );
 }
 

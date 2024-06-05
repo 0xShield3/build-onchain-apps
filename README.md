@@ -1,6 +1,8 @@
 <img src='./docs/logo-v-0-17.png' width='800' alt='Build Onchain Apps Template'>
 
-# [Build Onchain Apps Template (⛵️)](https://github.com/coinbase/build-onchain-apps/)
+# [Shield3 Version of Build Onchain Apps Template (⛵️)](https://github.com/0xShield3/build-onchain-apps/)
+
+*Forked from [coinbase/build-onchain-apps](https://github.com/coinbase/build-onchain-apps)*
 
 > Accelerate your onchain creativity with the Build Onchain Apps Template. ☕️
 
@@ -33,7 +35,7 @@ Whether you're a hackathon participant or an ambitious entrepreneur looking to b
 To get started building with BOAT, just run our CLI, and you will be guided to have an Onchain App and running.
 
 ```bash
-npx @coinbase/build-onchain-apps@latest create
+npx @0xshield3/build-onchain-apps@latest create
 ```
 
 <p align='center'>

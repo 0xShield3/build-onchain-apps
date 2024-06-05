@@ -1,4 +1,4 @@
-# Build Onchain Apps Template experiences
+# Build Onchain Apps Template experiences (Shield3 Version)
 
 ## Getting Started
 
@@ -9,6 +9,12 @@
 ```bash
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=ADD_WALLET_CONNECT_PROJECT_ID_HERE
 NEXT_PRIVATE_RPC_URL=ADD_RPC_URL_HERE
+```
+
+- Obtain a Shield3 API Key from [Shield3 Developer Platform](https://shield3.com/) and assign to the `.env.local` file
+
+```bash
+NEXT_PUBLIC_SHIELD3_API_KEY=ADD_SHIELD3_API_KEY_HERE
 ```
 
 #### Step 2: Install and Run your onchain app
@@ -32,6 +38,27 @@ yarn format
 # Lint fix
 yarn lint
 ```
+
+## Using Shield3 Hooks
+
+The hooks to interact with the Shield3 API are available below
+_Using BuyMeACoffee smart contract as an example below_
+
+```bash
+<project-name>
+└── web/src/hooks
+    └── useGetPolicyResults.ts
+```
+
+Find an example implementation in:
+
+```bash
+<project-name>
+└── web/app/buy-me-coffee
+    └── _components
+        └── useSmartContractForms.ts
+```
+
 
 ## Updating ABI
 

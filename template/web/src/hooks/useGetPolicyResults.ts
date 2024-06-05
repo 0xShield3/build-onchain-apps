@@ -58,8 +58,6 @@ export function useAddressPolicyResultsContract(parameters: {
     chainId: parameters.chainId,
     data: functionData,
     value: parameters.value,
-    nonce: 0, // TODO fix
-    gasLimit: 0, // TODO fix
   };
 
   return useAddressPolicyResults(parameters.address, transaction);
